@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="libplf",
-    version="0.0.1",
+    version="0.0.2",
     author="vang1ong7ang",
     author_email="vang1ong7ang@outlook.com",
     description="An academic library for state machinev specification and model checking",
