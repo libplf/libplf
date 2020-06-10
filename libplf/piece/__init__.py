@@ -1,5 +1,6 @@
 from __future__ import annotations
 from typing import Iterable
+from numbers import Number
 from sympy.matrices import Matrix
 from ..point import T as point
 
@@ -17,3 +18,7 @@ class T(tuple):
         X = [point.x for point in self]
         S = [point for point in zip(*X)]
         return Matrix(S + [[1]*len(self)])
+
+    def barycentric_coordinate(self, *args: Iterable[Number]) -> Matrix:
+        r = Matrix([arg for arg in args] + [1])
+        return self.R().inv() * r

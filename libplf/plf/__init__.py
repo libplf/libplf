@@ -19,17 +19,42 @@ class T(tuple):
         for a, b in combinations(args, 2):
             Ra, Rb = a.R(), b.R()
             K = Ra.inv() * Rb
+            print(Ra)
+            print(Rb)
+            print(K)
+            M = [(min(K.row(i)), max(K.row(i))) for i in range(K.rows)]
+            if all([p > 1 or q < 0 for p, q in M]):
+                continue
+            if any([p < 1 and q > 0 for p, q in M]):
+                raise AssertionError
 
-            pass
-        # TODO: validation
+            for point in a:
+                if point in b:
+                    continue
+                l = b.barycentric_coordinate(*point.x)
+                if max(l) > 1:
+                    continue
+                if min(l) < 0:
+                    continue
+                raise AssertionError
+
+            for point in b:
+                if point in a:
+                    continue
+                l = a.barycentric_coordinate(*point.x)
+                if max(l) > 1:
+                    continue
+                if min(l) < 0:
+                    continue
+                raise AssertionError
+
         return super().__new__(self, args)
 
     def __call__(self, *args: Iterable[Number]) -> Iterable[Number]:
         assert len(args) + 1 == len(choice(self))
 
         for piece in self:
-            r = Matrix([arg for arg in args] + [1])
-            l = piece.R().inv() * r
+            l = piece.barycentric_coordinate(*args)
             if max(l) > 1:
                 continue
             if min(l) < 0:
