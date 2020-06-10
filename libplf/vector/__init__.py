@@ -5,4 +5,7 @@ from numbers import Number
 
 class T(tuple):
     def __new__(self, *args: Iterable[Number]) -> T:
+        assert len(args) > 0
+        for arg in args:
+            assert isinstance(arg, Number)
         return super().__new__(self, args)
