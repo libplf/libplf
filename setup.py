@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="libplf",
-    version="0.0.3",
+    version="0.0.4",
     author="vang1ong7ang",
     author_email="vang1ong7ang@outlook.com",
     description="library for multidimensional piecewise linear function",

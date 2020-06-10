@@ -401,3 +401,27 @@ def test_libplf_case_000D():
     )
 
     assert f(2, 3) == vector(2)
+
+
+def test_libplf_case_000E():
+    try:
+        plf(
+            piece(
+                point(
+                    vector(0, 0),
+                    vector(0),
+                ),
+                point(
+                    vector(0, 1),
+                    vector(1),
+                ),
+                point(
+                    vector(0, 2),
+                    vector(2),
+                ),
+            ),
+        )
+    except:
+        pass
+    else:
+        raise RuntimeError

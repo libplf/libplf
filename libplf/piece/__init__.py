@@ -6,6 +6,9 @@ from ..point import T as point
 
 
 class T(tuple):
+    def __init__(self, *args: Iterable[point]) -> None:
+        assert self.R().det() != 0
+
     def __new__(self, *args: Iterable[point]) -> T:
         for arg in args:
             assert isinstance(arg, point)
