@@ -22,7 +22,7 @@ class T(tuple):
             M = [(min(K.row(i)), max(K.row(i))) for i in range(K.rows)]
             if any([p > 1 or q < 0 for p, q in M]):
                 continue
-            if any([p < 1 and q > 0 for p, q in M]):
+            if all([p < 1 and q > 0 for p, q in M]):
                 raise AssertionError
 
             for point in a:
