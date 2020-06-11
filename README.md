@@ -2,27 +2,15 @@
 
 library for multidimensional piecewise linear function
 
-# usage
+# documentation
 
-```python
-from libplf import *
+see [plots](#plots) to see how to use libplf.
 
-f = plf(
-    piece(
-        point(
-            vector(1, 1),
-            vector(8),
-        ),
-        point(
-            vector(2, 3),
-            vector(5),
-        ),
-        point(
-            vector(3, 2),
-            vector(5),
-        ),
-    ),
-)
+## spec
 
-f(1.5, 1.5)
-```
+[multidimensional piecewise linear function](docs/specs/plf.ipynb)
+
+## plots
+
+- [piecewise linear function: 1D -> 1D](docs/plots/PLF_1_1.ipynb)
+- [multidimensional piecewise linear function: 2D -> 1D](docs/plots/PLF_2_1.ipynb)
