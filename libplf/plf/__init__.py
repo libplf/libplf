@@ -19,11 +19,8 @@ class T(tuple):
         for a, b in combinations(args, 2):
             Ra, Rb = a.R(), b.R()
             K = Ra.inv() * Rb
-            print(Ra)
-            print(Rb)
-            print(K)
             M = [(min(K.row(i)), max(K.row(i))) for i in range(K.rows)]
-            if all([p > 1 or q < 0 for p, q in M]):
+            if any([p > 1 or q < 0 for p, q in M]):
                 continue
             if any([p < 1 and q > 0 for p, q in M]):
                 raise AssertionError

@@ -13,7 +13,6 @@ class T(tuple):
         for arg in args:
             assert isinstance(arg, point)
         assert len(set([len(arg.y) for arg in args])) == 1
-        assert len(set([arg.x for arg in args])) == len(args)
         assert all([len(arg.x)+1 == len(args) for arg in args])
         return super().__new__(self, args)
 
